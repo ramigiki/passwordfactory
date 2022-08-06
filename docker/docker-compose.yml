@@ -1,0 +1,22 @@
+version: "3.7"
+
+services:
+  passwordfactory:
+    build:
+      context: ../
+      dockerfile: docker/webapp/app.Dockerfile
+    container_name: passwordfactory
+    restart: always
+    environment:
+      - APP_NAME=passwordfactory
+    expose:
+      - 8080
+  
+  nginx:
+    build:
+      context: ../
+      dockerfile: docker/nginx/nginx.Dockerfile
+    container_name: nginx
+    restart: always
+    ports:
+      - "80:80"

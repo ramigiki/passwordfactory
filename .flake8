@@ -1,0 +1,5 @@
+[flake8]
+exclude=.* *.egg *.egg-info *env* docs dist build
+max-line-length=119
+max_complexity=12
+import-order-style=pep8

@@ -1,0 +1,1 @@
+[![Python application](https://github.com/ramigiki/passwordfactory/actions/workflows/app.yml/badge.svg?branch=main)](https://github.com/ramigiki/passwordfactory/actions/workflows/app.yml)

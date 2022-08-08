@@ -1,16 +1,12 @@
-from app.api.resources.resources import PasswordFactory
-from dotenv import dotenv_values
+from app.api.resources import PasswordFactory
 from flask_restful import Api
-from app.logger import Logger
+from app.logger import get_logger
 from flask_cors import CORS
 from flask import Flask
-import os
 
 # create flask app instance
 app = Flask(__name__)
-
-# setup logger in the beginning to catch errors
-logger = Logger(name="applogger").get_logger()
+logger = get_logger()
 
 # makes sure cross origin headers are added
 CORS(app)
@@ -24,12 +20,6 @@ api.init_app(app)
 
 logger.info("Application is initialised successfully")
 try:
-    # environment varibales overrides .env file
-    config = {
-        **dotenv_values(".env"),
-        **os.environ,
-    }
-
     # get the env varibales and pass it to app config
     app.config.from_prefixed_env(prefix="PASSWORD")
     logger.info("Added environment varibales to the app")

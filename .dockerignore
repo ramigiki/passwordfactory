@@ -3,3 +3,5 @@ tests/data
 __pycache__
 venv
 env
+logs/error.log*
+logs/info.log*

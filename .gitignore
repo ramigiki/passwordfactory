@@ -2,3 +2,5 @@ venv
 env
 .vscode
 __pycache__
+logs/error.log*
+logs/info.log*

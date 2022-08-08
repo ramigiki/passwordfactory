@@ -14,8 +14,6 @@ services:
       PASSWORD_LOWER_CASE: ${PASSWORD_LOWER_CASE}
       PASSWORD_UPPER_CASE: ${PASSWORD_UPPER_CASE}
       PASSWORD_SPECIAL_SYMBOLS: ${PASSWORD_SPECIAL_SYMBOLS}
-    expose:
-      - 8080
   
   nginx:
     build:

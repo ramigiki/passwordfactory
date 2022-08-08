@@ -3,10 +3,11 @@ install:
 	pip install -r requirements.txt
 
 test:
-	make install
+	pip install --upgrade pip
+	pip install -r tests_requirements.txt	
 	py.test --verbose
 
-audit:
+lint:
 	flake8 *.py app tests
 
 format:

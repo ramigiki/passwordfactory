@@ -107,9 +107,16 @@ To format code:
 make format
 ```
 
+### API documentation
+
+* ``postman/`` -- contains api collection which can be impoted to postman. Each API call is documented.
+* postman tests are written against each api call which can be exectued through postman runner
+
+---
+
 ### Flowchart diagram of /generate api call
 
-#### Note: made using mermaid code
+>**Note** Diagram is created using mermaid code, only visible in repository.
 
 ```mermaid
 graph TD

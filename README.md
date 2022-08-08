@@ -11,10 +11,26 @@ This repository contains code for **Password Factory**
 * ``app/`` -- contains code for api, schema, utilities and logger
 * ``docker/`` -- docker-compose file and docker files for nginx and webapp. It also contains configs for uwsgi and nginx
 * ``tests/`` -- Unit test scripts and Data
+* ``postman/`` -- postman collection along with api tests
 * ``logs/`` -- Application generated logs will store here
 * ``docs/`` -- Application documentation
 
 ---
+
+### Flowchart diagram of /generate api call
+
+#### made using mermaid code
+
+```mermaid
+graph TD
+    A[Request password: '/generate'] -->|Gets params and calls| B(Password Factory)
+    B --> C{Validate params}
+    C -->|Incorrect params| E[Return 404 Bad Request]
+    E -->id1([Done])
+    C -->|Correct params| F[Generate Password]
+    F -->G[Return password to user]
+    G -->Hid1([Done])
+```
 
 ### Starting Dev Environment
 

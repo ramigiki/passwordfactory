@@ -39,7 +39,7 @@ _Make sure you have installed [python3](https://www.python.org/downloads/)_
     source venv/bin/activate
     ```
 
-* Now start dev server using the following command. It will install dependencies and run the developement server on localhost default port 5000
+* Now start dev server using the following command. It will install dependencies and run the developement server on localhost default port 5000 : <http://localhost:5000/generate?numbers=1>
 
     ```bash
     make start-dev
@@ -58,21 +58,21 @@ _Make sure you have installed [docker](https://docs.docker.com/install/) and
     cd <directory>
     ```
 
-* Now to fireup docker containers using docker-compose:
+* To fireup docker containers using docker-compose:
 
     ```bash
     make start-docker
     ```
 
-* Now to stop docker containers:
+* The application would be served at <http://localhost/generate?numbers=1>
+
+* To stop docker containers:
 
     ```bash
     make stop-docker
     ```
 
-* The application would be served at <http://localhost/generate?numbers=1>
-
-* To build docker images from the docker file:
+* To build docker images from the docker files:
 
    ```bash
     make build-docker

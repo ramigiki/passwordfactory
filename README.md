@@ -17,21 +17,6 @@ This repository contains code for **Password Factory**
 
 ---
 
-### Flowchart diagram of /generate api call
-
-#### made using mermaid code
-
-```mermaid
-graph TD
-    A[Request password: '/generate'] -->|Gets params and calls| B(Password Factory)
-    B --> C{Validate params}
-    C -->|Incorrect params| E[Return 404 Bad Request]
-    E -->id1([Done])
-    C -->|Correct params| F[Generate Password]
-    F -->G[Return password to user]
-    G -->Hid1([Done])
-```
-
 ### Starting Dev Environment
 
 _Make sure you have installed [python3](https://www.python.org/downloads/)_
@@ -120,4 +105,19 @@ To format code:
 
 ```bash
 make format
+```
+
+### Flowchart diagram of /generate api call
+
+#### Note: made using mermaid code
+
+```mermaid
+graph TD
+    A[Request password: '/generate'] -->|Gets params and calls| B(Password Factory)
+    B --> C{Validate params}
+    C -->|Incorrect params| E[Return 404 Bad Request]
+    E -->id1([Done])
+    C -->|Correct params| F[Generate Password]
+    F -->G[Return password to user]
+    G -->Hid1([Done])
 ```

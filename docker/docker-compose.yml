@@ -8,7 +8,12 @@ services:
     container_name: passwordfactory
     restart: always
     environment:
-      - APP_NAME=passwordfactory
+      PASSWORD_APP_NAME: ${PASSWORD_APP_NAME}
+      PASSWORD_LENGTH: ${PASSWORD_LENGTH}
+      PASSWORD_NUMBERS: ${PASSWORD_NUMBERS}
+      PASSWORD_LOWER_CASE: ${PASSWORD_LOWER_CASE}
+      PASSWORD_UPPER_CASE: ${PASSWORD_UPPER_CASE}
+      PASSWORD_SPECIAL_SYMBOLS: ${PASSWORD_SPECIAL_SYMBOLS}
     expose:
       - 8080
   

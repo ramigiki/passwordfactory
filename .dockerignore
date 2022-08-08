@@ -1,4 +1,5 @@
 tests/data
 .gitignore
 __pycache__
+venv
 env

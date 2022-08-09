@@ -5,3 +5,6 @@ __pycache__
 logs/error.log*
 logs/info.log*
 .coverage
+dist
+*.egg-info
+build

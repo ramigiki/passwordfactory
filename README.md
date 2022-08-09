@@ -6,7 +6,7 @@ A Flask application that generate passwords on demand.
 
 ### Directory structure
 
-This repository contains code for **Password Factory**
+This repository contains code for **Password Factory**:
 
 * ``app/`` -- contains code for api, schema, utilities and logger
 * ``docker/`` -- docker-compose file and docker files for nginx and webapp. It also contains configs for uwsgi and nginx
@@ -14,20 +14,20 @@ This repository contains code for **Password Factory**
 * ``postman/`` -- postman collection along with api tests
 * ``logs/`` -- Application generated logs will store here
 
-### Important files in the root directory
+### Necessary files in the root directory
 
 * ```.env``` -- contatins the server default params. If any param is missing in the API call, it would be filled from this file.
 * ```flake8``` -- configurations for linting the code
 * ```Makefile``` -- contains the automation scripts
 * ```pytest.ini``` -- configurations for testing and coverage report
 * ```requirements.txt``` -- lists all the dependencies of the application
-*```tests_requirements.txt``` -- list all the dependencies for running the tests.
+* ```tests_requirements.txt``` -- list all the dependencies for running the tests.
 
 ---
 
-### Starting Development Environment
+### Running Development Environment
 
-_Make sure you have installed [python3](https://www.python.org/downloads/)_
+>**Note**: _Make sure you have [python3](https://www.python.org/downloads/)_ installed
 
 * Clone the repository
 * Navidate into the code directory
@@ -58,9 +58,11 @@ _Make sure you have installed [python3](https://www.python.org/downloads/)_
 
 * Run the API calls to test
 
+---
+
 ### Running Docker Instance (Calibrated for production)
 
-_Make sure you have installed [docker](https://docs.docker.com/install/) and
+>**Note**: _Make sure you have installed [docker](https://docs.docker.com/install/) and
 [docker-compose](https://docs.docker.com/compose/install/)._
 
 * Clone the repository
@@ -95,7 +97,9 @@ _Make sure you have installed [docker](https://docs.docker.com/install/) and
 
 * Run the API call to test
 
-### Creating distribution
+---
+
+### Creating distribution for packaging
 
 * Clone the repository
 
@@ -113,6 +117,22 @@ _Make sure you have installed [docker](https://docs.docker.com/install/) and
     ```
 
 >**Note** A dist directory will be created with tar.gz file. It can be published and installed using setup.py commands
+
+---
+
+### Continuous Integration Pipeline
+
+>**Note**: Github Actions are used for continuous integration
+
+* Checks performed on commit to main
+
+    ```text
+    - Run linter to check code standards
+    - Run pytest to execute tests
+
+    ```
+
+* Code will be merged to main branch once the checks are successfull
 
 ---
 
@@ -142,10 +162,17 @@ To format code:
 make format
 ```
 
+---
+
 ### API documentation and testing
 
-* ``postman/`` -- contains api collection which can be imported to postman. Each API call is documented.
-* postman tests are written against each api call which can be exectued through postman run collection
+* ``postman/`` -- contains api collection and test cases.
+
+* Each API has a documentation section to explain the scenario.
+
+* 40 postman API tests are in the collection to test API.
+
+* Import the collection and execute run collection.
 
 ---
 
@@ -163,3 +190,33 @@ graph TD
     F -->G[Return password to user]
     G -->Hid1([Done])
 ```
+
+---
+
+### Best practices followed during the development
+
+* Followed the rule of simplicity. Simple is better than complex.
+
+* Code distribution across modules and files to ensure separation of concern.
+
+* Custom logging with user readable message format and log rotation.
+
+* Handled error such that they get noticed. log file is maintained incase error in the console is missed.
+
+* In docker implementation, reverse proxy through nginx to ensure api calls donot fall on flask app directly (best practice to ensure security).
+
+* Continuous integration implemented to make sure code is not buggy and upto the set standard.
+
+* .env file varibales are overridden by env variables exported through export command.
+
+* virtual environment used to make sure dependencies are installed in the env.  
+
+* Marshmallow schema for validation of API request.
+
+* flake8 is used for linting code.
+
+* black is used for formating code.
+
+* setup.py implemented for makind distribution packages.
+
+* test cases implementation.

@@ -1,12 +1,12 @@
-from app.api.resources import PasswordFactory
 from flask_restful import Api
-from app.logger import get_logger
+from app.logger import setup_logger
 from flask_cors import CORS
 from flask import Flask
+import sys
 
 # create flask app instance
 app = Flask(__name__)
-logger = get_logger()
+setup_logger()
 
 # makes sure cross origin headers are added
 CORS(app)
@@ -14,18 +14,22 @@ CORS(app)
 # initiate instance of flask-restful
 # add the only resource to generate password
 # link with flask through api.init_app
-api = Api()
-api.add_resource(PasswordFactory, "/generate")
-api.init_app(app)
 
-logger.info("Application is initialised successfully")
+app.logger.info("Application is initialised, parsing env ...")
 try:
     # get the env varibales and pass it to app config
     app.config.from_prefixed_env(prefix="PASSWORD")
-    logger.info("Added environment varibales to the app")
+    app.logger.info("Added environment varibales to the app")
 except Exception as e:
-    logger.info("Error occurred while parsing env varibales.")
-    app.logger.exception(e)
+    app.logger.critical("Error occurred while parsing env: {}".format(e))
+    sys.exit(1)
+
+# makes sure the circular dependency does not rise
+from app.api.resources import PasswordFactory  # noqa E402
+
+api = Api()
+api.add_resource(PasswordFactory, "/generate")
+api.init_app(app)
 
 
 @app.after_request
@@ -36,4 +40,5 @@ def add_security_headers(response):
     """
     response.headers["X-Frame-Options"] = "DENY"
     response.headers["X-Content-Type-Options"] = "nosniff"
+    response.headers["content-type"] = "application/json"
     return response

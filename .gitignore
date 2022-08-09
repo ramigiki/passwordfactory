@@ -2,8 +2,7 @@ venv
 env
 .vscode
 __pycache__
-logs/error.log*
-logs/info.log*
+logs/*.log*
 .coverage
 dist
 *.egg-info

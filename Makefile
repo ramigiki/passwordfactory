@@ -36,5 +36,5 @@ clean-pyc:
 	find . -name *pyc | grep __pycache__ | xargs rm -rf
 
 dist:
-    # It can be customised futher.
+    # Customise the dist to not include unnecessary files
 	python setup.py sdist

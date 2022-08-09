@@ -70,11 +70,13 @@ class PasswordReqSchema(Schema):
         Returns:
             data (dict): returns data dict
         """
-        low = "lowercase" in data and int(data["lowercase"]) == 0
-        upp = "uppercase" in data and int(data["uppercase"]) == 0
-        sym = "symbols" in data and int(data["symbols"]) == 0
-        num = "numbers" in data and int(data["numbers"]) == 0
-        if num and sym and low and upp:
+
+        lowercase_off = "lowercase" in data and int(data["lowercase"]) == 0
+        uppercase_off = "uppercase" in data and int(data["uppercase"]) == 0
+        symbols_off = "symbols" in data and int(data["symbols"]) == 0
+        numbers_off = "numbers" in data and int(data["numbers"]) == 0
+
+        if lowercase_off and uppercase_off and symbols_off and numbers_off:
             message = "Atleast one feature should be active"
             raise ValidationError(message=message, field_name="all")
         return data

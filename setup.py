@@ -6,6 +6,11 @@ from setuptools import setup, find_packages
 
 here = path.abspath(path.dirname(__file__))
 
+"""
+See:
+https://packaging.python.org/en/latest/distributing.html
+https://github.com/pypa/sampleproject
+"""
 
 # check the supported interpreter version
 if sys.version_info[0] != 3:

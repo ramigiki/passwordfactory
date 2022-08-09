@@ -17,7 +17,7 @@ This repository contains code for **Password Factory**:
 ### Necessary files in the root directory
 
 * ```.env``` -- contatins the server default params. If any param is missing in the API call, it would be filled from this file.
-* ```flake8``` -- configurations for linting the code
+* ```.flake8``` -- configurations for linting the code
 * ```Makefile``` -- contains the automation scripts
 * ```pytest.ini``` -- configurations for testing and coverage report
 * ```requirements.txt``` -- lists all the dependencies of the application
@@ -217,6 +217,6 @@ graph TD
 
 * black is used for formating code.
 
-* setup.py implemented for makind distribution packages.
+* setup.py implemented for distribution packages.
 
 * test cases implementation.

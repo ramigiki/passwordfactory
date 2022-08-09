@@ -25,7 +25,7 @@ except Exception as e:
     sys.exit(1)
 
 # makes sure the circular dependency does not rise
-from app.api.resources import PasswordFactory  # noqa E402
+from app.api import PasswordFactory  # noqa E402
 
 api = Api()
 api.add_resource(PasswordFactory, "/generate")

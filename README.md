@@ -13,11 +13,19 @@ This repository contains code for **Password Factory**
 * ``tests/`` -- Unit test scripts and Data
 * ``postman/`` -- postman collection along with api tests
 * ``logs/`` -- Application generated logs will store here
-* ``docs/`` -- Application documentation
+
+### Important files in the root directory
+
+* ```.env``` -- contatins the server default params. If any param is missing in the API call, it would be filled from this file.
+* ```flake8``` -- configurations for linting the code
+* ```Makefile``` -- contains the automation scripts
+* ```pytest.ini``` -- configurations for testing and coverage report
+* ```requirements.txt``` -- lists all the dependencies of the application
+*```tests_requirements.txt``` -- list all the dependencies for running the tests.
 
 ---
 
-### Starting Dev Environment
+### Starting Development Environment
 
 _Make sure you have installed [python3](https://www.python.org/downloads/)_
 
@@ -45,6 +53,10 @@ _Make sure you have installed [python3](https://www.python.org/downloads/)_
     ```bash
     make start-dev
     ```
+
+* Import the postman collection from the ``postman/`` directory and set environment to 'Password factory' and baseurl to {{local}}.
+
+* Run the API calls to test
 
 ### Running Docker Instance (Calibrated for production)
 
@@ -79,6 +91,29 @@ _Make sure you have installed [docker](https://docs.docker.com/install/) and
     make build-docker
     ```
 
+* Import the postman collection in the ``postman/`` directory and set environment to 'Password factory' and baseurl to {{docker}}.
+
+* Run the API call to test
+
+### Creating distribution
+
+* Clone the repository
+
+* Navidate into the code directory
+
+    ```bash
+    cd <directory>
+    ```
+
+* To create distribution files run command
+
+    ```bash
+    make dist
+
+    ```
+
+>**Note** A dist directory will be created with tar.gz file. It can be published and installed using setup.py commands
+
 ---
 
 ### Other Helpful Commands
@@ -107,10 +142,10 @@ To format code:
 make format
 ```
 
-### API documentation
+### API documentation and testing
 
-* ``postman/`` -- contains api collection which can be impoted to postman. Each API call is documented.
-* postman tests are written against each api call which can be exectued through postman runner
+* ``postman/`` -- contains api collection which can be imported to postman. Each API call is documented.
+* postman tests are written against each api call which can be exectued through postman run collection
 
 ---
 

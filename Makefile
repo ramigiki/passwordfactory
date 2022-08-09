@@ -28,3 +28,13 @@ build-docker:
 	docker build --env-file .env \
 		-f docker/webapp/app.Dockerfile -t passwordfactory:latest .
 	docker build -f docker/nginx/nginx.Dockerfile -t nginx:latest .
+
+clean-pyc:
+	find . -name '*.pyc' -exec rm -f {} +
+	find . -name '*.pyo' -exec rm -f {} +
+	find . -name '*~' -exec rm -f {} +
+	find . -name *pyc | grep __pycache__ | xargs rm -rf
+
+dist:
+    # It can be customised futher.
+	python setup.py sdist
